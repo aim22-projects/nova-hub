@@ -1,6 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run Desktop App" type="Application" factoryName="Application">
-    <option name="ALTERNATIVE_JRE_PATH" value="Kotlin SDK" />
+    <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/jbr-21.0.7" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="MAIN_CLASS_NAME" value="com.aim.nova.hub.MainKt" />
     <module name="NovaHub.composeApp.desktopMain" />
     <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
