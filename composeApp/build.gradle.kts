@@ -46,7 +46,11 @@ compose.desktop {
             packageVersion = "1.0.0"
 
             windows {
+                shortcut = true
+                menu = true
                 iconFile.set(project.file("src/desktopMain/resources/icon.ico"))
+                menuGroup = "Nova Tools"
+                upgradeUuid = "b9d6ee7a-3322-4ab3-a543-f66d330defd2" // generate new UUID
             }
 
             macOS {

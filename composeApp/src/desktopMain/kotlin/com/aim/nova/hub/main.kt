@@ -12,6 +12,7 @@ import org.jetbrains.compose.resources.painterResource
 fun main() = application {
 
     val trayState: TrayState = rememberTrayState()
+    val windowState: WindowState = rememberWindowState(size = DpSize())
     var isWindowVisible by remember { mutableStateOf(true); }
     val notification = rememberNotification("Notification", "Message from MyApp!")
 
@@ -19,34 +20,27 @@ fun main() = application {
         state = trayState,
         icon = painterResource(Res.drawable.icon),
         menu = {
-//                Item(
-//                    "Increment value",
-//                    onClick = {
-//                    count++
-//                    }
-//                )
+            Item(
+                "Open App",
+                onClick = { isWindowVisible = true }
+            )
             Item(
                 "Send notification",
-                onClick = {
-                    trayState.sendNotification(notification)
-                }
+                onClick = { trayState.sendNotification(notification) }
             )
             Item(
                 "Exit",
-                onClick = {
-                    exitApplication()
-                }
+                onClick = ::exitApplication
             )
         },
-        onAction = {
-            isWindowVisible = true
-        }
+        onAction = { isWindowVisible = true }
 
     )
 
     if (isWindowVisible)
         Window(
-            onCloseRequest = ::exitApplication,
             title = "Nova Hub",
+            onCloseRequest = { isWindowVisible = false },
         ) { App() }
+
 }
