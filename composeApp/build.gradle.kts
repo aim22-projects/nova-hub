@@ -44,6 +44,23 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "com.aim.nova.hub"
             packageVersion = "1.0.0"
+
+            windows {
+                iconFile.set(project.file("src/desktopMain/resources/icon.ico"))
+            }
+
+            macOS {
+                iconFile.set(project.file("src/desktopMain/resources/icon.icns"))
+            }
+
+            linux {
+                iconFile.set(project.file("src/desktopMain/resources/icon.png"))
+            }
         }
     }
 }
+//compose.resources {
+//    publicResClass = false
+//    packageOfResClass = "com.example.nova.hub.resources"
+//    generateResClass = auto
+//}

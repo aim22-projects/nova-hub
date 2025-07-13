@@ -1,30 +1,20 @@
 package com.aim.nova.hub
 
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyShortcut
-import androidx.compose.ui.window.MenuBar
-import androidx.compose.ui.window.Tray
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.application
-import androidx.compose.ui.window.rememberNotification
-import androidx.compose.ui.window.rememberTrayState
+import androidx.compose.ui.window.*
+import org.jetbrains.compose.resources.painterResource
 
+import novahub.composeapp.generated.resources.Res
+import novahub.composeapp.generated.resources.icon
 
 fun main() = application {
     var action by remember { mutableStateOf("Last action: None") }
@@ -35,7 +25,8 @@ fun main() = application {
 
     Tray(
         state = trayState,
-        icon = TrayIcon,
+//        icon = TrayIcon,
+        icon = painterResource(Res.drawable.icon),
         menu = {
             Item(
                 "Increment value",
