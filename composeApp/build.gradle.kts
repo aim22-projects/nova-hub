@@ -28,6 +28,8 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.compose.desktop)
+            implementation("androidx.collection:collection:1.4.0") // 👈 ADD THIS
             implementation(libs.kotlinx.coroutinesSwing)
         }
     }
