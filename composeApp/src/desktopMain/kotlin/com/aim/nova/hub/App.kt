@@ -12,12 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import novahub.composeapp.generated.resources.Res
+import novahub.composeapp.generated.resources.icon
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import novahub.composeapp.generated.resources.Res
-import novahub.composeapp.generated.resources.compose_multiplatform
-import novahub.composeapp.generated.resources.icon
 
 @Composable
 @Preview
