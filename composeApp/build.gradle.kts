@@ -22,6 +22,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta03")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -30,11 +31,12 @@ kotlin {
             implementation(compose.desktop.currentOs)
             implementation(libs.compose.desktop)
             implementation("androidx.collection:collection:1.4.0") // 👈 ADD THIS
+//            implementation("androidx.navigation:navigation-compose:2.9.1")// 👈 ADD THIS
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta03")
             implementation(libs.kotlinx.coroutinesSwing)
         }
     }
 }
-
 
 compose.desktop {
     application {
