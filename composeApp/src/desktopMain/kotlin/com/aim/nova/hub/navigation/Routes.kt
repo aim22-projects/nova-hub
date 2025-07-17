@@ -16,3 +16,4 @@ enum class AppScreen(val title: StringResource) {
     Settings(Res.string.settings_screen),
 //    data class Details(val id: Int): Screen
 }
+
