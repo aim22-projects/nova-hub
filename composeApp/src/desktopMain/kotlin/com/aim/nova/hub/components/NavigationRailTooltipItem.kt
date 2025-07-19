@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 
@@ -29,6 +30,7 @@ data class NavItem(val route: String, val icon: ImageVector, val label: String)
 @Composable
 fun NavigationRailTooltipItem(
     item: NavItem,
+    size: Dp = 36.dp,
     selected: Boolean,
     onClick: () -> Unit
 ) {
@@ -56,8 +58,8 @@ fun NavigationRailTooltipItem(
     ) {
         Box(
             modifier = Modifier
-                .size(48.dp)
-                .clip(RoundedCornerShape(12.dp))
+                .size(size)
+                .clip(RoundedCornerShape(8.dp))
                 .background(
                     if (selected) MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)
                     else Color.Transparent
