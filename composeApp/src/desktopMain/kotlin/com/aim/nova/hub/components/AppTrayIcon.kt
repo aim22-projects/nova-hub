@@ -1,7 +1,6 @@
 package com.aim.nova.hub.components;
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.window.*
 import novahub.composeapp.generated.resources.Res
 import novahub.composeapp.generated.resources.icon
@@ -15,9 +14,9 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ApplicationScope.AppTrayIcon(
-    trayState: TrayState,
-    showWindow:() -> Unit,
+    onOpenWindow:() -> Unit,
 ) {
+    val trayState: TrayState = rememberTrayState()
     val notification = rememberNotification("Notification", "Message from MyApp!")
     Tray(
         state = trayState,
@@ -25,7 +24,7 @@ fun ApplicationScope.AppTrayIcon(
         menu = {
             Item(
                 "Open App",
-                onClick = showWindow
+                onClick = onOpenWindow
             )
             Item(
                 "Send notification",
@@ -36,6 +35,6 @@ fun ApplicationScope.AppTrayIcon(
                 onClick = ::exitApplication
             )
         },
-        onAction = showWindow
+        onAction = onOpenWindow
     )
 }

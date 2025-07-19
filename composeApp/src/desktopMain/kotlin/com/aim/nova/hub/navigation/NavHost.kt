@@ -9,7 +9,7 @@ import com.aim.nova.hub.screens.HomeScreen
 import com.aim.nova.hub.screens.SettingsScreen
 
 @Composable
-fun AppNavHost()
+fun  AppNavHost()
 {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "home") {
