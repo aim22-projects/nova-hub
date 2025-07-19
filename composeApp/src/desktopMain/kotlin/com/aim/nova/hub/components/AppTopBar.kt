@@ -1,20 +1,26 @@
 package com.aim.nova.hub.components
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.window.WindowDraggableArea
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material3.*
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Minimize
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.WindowScope
 import androidx.compose.ui.window.WindowState
@@ -23,70 +29,53 @@ import novahub.composeapp.generated.resources.app_name
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun WindowScope.AppDraggableTopBar(windowState: WindowState, onCloseRequest: () -> Unit)
-{
-    WindowDraggableArea {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .background(Color.DarkGray) // <--- Add a distinct background
-//                .border(2.dp, Color.Red)
-        ) {
-            AppTitleBar(windowState, onCloseRequest)
-        }
-    }
+fun WindowScope.DraggableAppTopBar(windowState: WindowState, onCloseRequest: () -> Unit) = WindowDraggableArea {
+    AppTopBar (windowState, onCloseRequest)
 }
 
-/*
-* Use directly in Window.WindowDraggableArea
-* Window
-* {
-*   WindowDraggableArea {
-*       // here
-*       AppTitleBar(...)
-*       {...}
-*   }
-* }
-* */
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
-fun AppTitleBar(windowState: WindowState, onCloseRequest: () -> Unit) {
-
-    // WindowDraggableArea allows dragging the window from this composable
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp)
-                .background(Color(0xFF1E1E1E))
-                .padding(horizontal = 8.dp),
+fun AppTopBar(windowState: WindowState, onCloseRequest: () -> Unit) = TopAppBar (
+    modifier = Modifier
+        .fillMaxWidth()
+        .height(48.dp)
+        .heightIn(48.dp),
+    title = {
+        // Use a Row with verticalArrangement to center the title
+        Row(
+            modifier = Modifier.fillMaxHeight(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // App Title
-            Text(stringResource(Res.string.app_name), color = Color.White, modifier = Modifier.weight(1f))
-
-            // Minimize Button
-            IconButton(onClick = {
-                windowState.isMinimized = true
-            }) {
+            Text(stringResource(Res.string.app_name), style = MaterialTheme.typography.titleMedium)
+        } },
+    actions = {
+        Row(
+            modifier = Modifier.fillMaxHeight().padding(0.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            TextButton({ windowState.isMinimized = true},
+                shape = RoundedCornerShape(8.dp), // Rounded corners
+                contentPadding = PaddingValues(0.dp), // No extra padding
+                modifier = Modifier.size(36.dp) // Square: equal width and height
+            ){
                 Icon(
                     imageVector = Icons.Default.Minimize,
                     contentDescription = "Minimize Window",
-                    tint = Color.White
+                    tint = MaterialTheme.colorScheme.onBackground
                 )
             }
-
-            // Close Button
-            IconButton(
-                onClick = onCloseRequest// onCloseRequest
-
-            ) {
+            Spacer(Modifier.size(4.dp))
+            TextButton(onCloseRequest,
+                shape = RoundedCornerShape(8.dp), // Rounded corners
+                contentPadding = PaddingValues(0.dp), // No extra padding
+                modifier = Modifier.size(36.dp) // Square: equal width and height
+            ){
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close Window",
-                    tint = Color.White
+                    tint = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
-
-}
+    }
+)

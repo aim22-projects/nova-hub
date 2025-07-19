@@ -14,27 +14,24 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun ApplicationScope.AppTrayIcon(
+    trayState: TrayState,
     onOpenWindow:() -> Unit,
-) {
-    val trayState: TrayState = rememberTrayState()
-    val notification = rememberNotification("Notification", "Message from MyApp!")
-    Tray(
-        state = trayState,
-        icon = painterResource(Res.drawable.icon),
-        menu = {
-            Item(
-                "Open App",
-                onClick = onOpenWindow
-            )
-            Item(
-                "Send notification",
-                onClick = { trayState.sendNotification(notification) }
-            )
-            Item(
-                "Exit",
-                onClick = ::exitApplication
-            )
-        },
-        onAction = onOpenWindow
-    )
-}
+) = Tray(
+    state = trayState,
+    icon = painterResource(Res.drawable.icon),
+    menu = {
+        Item(
+            "Open App",
+            onClick = onOpenWindow
+        )
+        Item(
+            "Send notification",
+            onClick = { trayState.sendNotification(Notification("Notification", "Message from MyApp!")) }
+        )
+        Item(
+            "Exit",
+            onClick = ::exitApplication
+        )
+    },
+    onAction = onOpenWindow
+)
