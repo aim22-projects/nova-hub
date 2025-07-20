@@ -1,40 +1,33 @@
 package com.aim.nova.hub.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Devices
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.NavigationRailDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.aim.nova.hub.navigation.Routes
 
 val topItems = listOf(
-    NavItem("home", Icons.Default.Home, "Home"),
-    NavItem("about", Icons.Default.Info, "About")
+    NavItem(Routes.HOME, Icons.Default.Home, "Home"),
+    NavItem(Routes.DEVICES, Icons.Default.Devices, "Devices"),
 )
 val bottomItems = listOf(
-    NavItem("settings", Icons.Default.Settings, "Settings")
+    NavItem(Routes.ABOUT, Icons.Default.Info, "About"),
+    NavItem(Routes.SETTINGS, Icons.Default.Settings, "Settings")
 )
 
 
 @Composable
-fun AppNavRail(navController: NavController)
+fun AppNavRail(navController: NavController, paddingValues: PaddingValues)
 {
     val currentBackStack by navController.currentBackStackEntryAsState()
     val currentRoute = currentBackStack?.destination?.route
@@ -43,8 +36,8 @@ fun AppNavRail(navController: NavController)
     NavigationRail (modifier =
         Modifier.fillMaxHeight()
         .wrapContentWidth()
-        .width(navItemSize + 12.dp), // ⬅️ Slim rail
-//        .padding(top = paddingValues.calculateTopPadding()), // ⬅️ Reduce vertical margin
+        .width(navItemSize + 12.dp) // ⬅️ Slim rail
+        .padding(top = paddingValues.calculateTopPadding()), // ⬅️ Reduce vertical margin
 //        containerColor = Color.DarkGray,
     ){
         // cannot add inner padding using direct NavigationRail.modifier which actually causes outer margin
