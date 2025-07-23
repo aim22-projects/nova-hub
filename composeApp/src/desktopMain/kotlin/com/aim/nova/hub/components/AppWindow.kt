@@ -13,6 +13,7 @@ fun AppWindow(
 ) = Window(
     state = windowState,
     title = "Nova Hub",
+    alwaysOnTop = true,
     resizable = false,
     undecorated = true,
     transparent = true,

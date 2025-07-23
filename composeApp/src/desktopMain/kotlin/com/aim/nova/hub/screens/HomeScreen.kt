@@ -11,16 +11,16 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 fun HomeScreen( navController: NavController ) {
     Column {
-        Text("Home Screen")
-        Button(onClick = {
-            navController.navigate("settings")
-        }) {
-            Text("Go to Settings!")
-        }
-        Button(onClick = {
-            navController.navigate("about")
-        }) {
-            Text("Go to About!")
-        }
+//        Text("Home Screen")
+//        Button(onClick = {
+//            navController.navigate("settings")
+//        }) {
+//            Text("Go to Settings!")
+//        }
+//        Button(onClick = {
+//            navController.navigate("about")
+//        }) {
+//            Text("Go to About!")
+//        }
     }
 }

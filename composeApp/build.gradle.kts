@@ -22,8 +22,14 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta03")
             implementation(compose.materialIconsExtended)
+            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.0-beta03")
+            // DataStore library
+            implementation("androidx.datastore:datastore:1.1.7")
+            // The Preferences DataStore library
+            implementation("androidx.datastore:datastore-preferences:1.1.7")
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
